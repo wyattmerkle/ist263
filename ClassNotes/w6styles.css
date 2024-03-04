@@ -1,0 +1,22 @@
+/*Grouped selector, will style all h1's and p's */
+h1, p {color: plum;
+    font-size:80%;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} 
+
+/*p {color:cadetblue;}
+This is our basic element selector,
+every p on th epage gets styled
+
+
+*/
+
+/*This styles a inside the p tag
+    its called a descendent selector VERY IMPORTANT */
+p a {color:darkseagreen;}
+
+/*This styles the ID */
+#secondparagraph {color:chartreuse;}
+
+/*This styles a class... Class you can have multuples, ids are only one */
+.purpletext {color:purple;}
