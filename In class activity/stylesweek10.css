@@ -1,0 +1,23 @@
+.responsive-text {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 24px;
+}
+
+/* By default, hide both texts */
+.large-text, .small-text {
+    display: none;
+}
+
+/* For viewports wider than 800px */
+@media screen and (min-width: 801px) {
+    .large-text {
+        display: block;
+    }
+}
+
+/* For viewports 800px or less */
+@media screen and (max-width: 800px) {
+    .small-text {
+        display: block;
+    }
