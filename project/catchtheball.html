@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the Ball Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background-color: #4b0082; 
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: #4b0082; 
+        }
+        .content {
+            padding: 20px;
+        }
+        canvas {
+            border: 1px solid #000;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="game-reviews.html">Game Reviews</a>
+        <a href="movie-reviews.html">Movie Reviews</a>
+        <a href="catchtheball.html">Catch the Ball</a>
+    </div>
+
+    <div class="content">
+        <h1>Catch the Ball Game</h1>
+        <canvas id="gameCanvas" width="480" height="320"></canvas>
+        <p>Score: <span id="score">0</span></p>
+        <p>High Score: <span id="highScore">0</span></p>
+        <script>
+            const canvas = document.getElementById("gameCanvas");
+            const ctx = canvas.getContext("2d");
+
+            let x = canvas.width / 2;
+            let y = canvas.height - 30;
+            let dx = 4; 
+            let dy = -4; 
+            const ballRadius = 10;
+            let paddleHeight = 10;
+            let paddleWidth = 50; 
+            let paddleX = (canvas.width - paddleWidth) / 2;
+            let rightPressed = false;
+            let leftPressed = false;
+            let score = 0;
+            let highScore = localStorage.getItem("highScore") || 0;
+
+            document.getElementById("highScore").innerText = highScore;
+
+            document.addEventListener("keydown", keyDownHandler, false);
+            document.addEventListener("keyup", keyUpHandler, false);
+
+            function keyDownHandler(e) {
+                if (e.key === "Right" || e.key === "ArrowRight") {
+                    rightPressed = true;
+                } else if (e.key === "Left" || e.key === "ArrowLeft") {
+                    leftPressed = true;
+                }
+            }
+
+            function keyUpHandler(e) {
+                if (e.key === "Right" || e.key === "ArrowRight") {
+                    rightPressed = false;
+                } else if (e.key === "Left" || e.key === "ArrowLeft") {
+                    leftPressed = false;
+                }
+            }
+
+            function drawBall() {
+                ctx.beginPath();
+                ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+                ctx.fillStyle = "#0095DD";
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            function drawPaddle() {
+                ctx.beginPath();
+                ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+                ctx.fillStyle = "#0095DD";
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawBall();
+                drawPaddle();
+                document.getElementById("score").innerText = score;
+
+                if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+                    dx = -dx;
+                }
+                if (y + dy < ballRadius) {
+                    dy = -dy;
+                } else if (y + dy > canvas.height - ballRadius) {
+                    if (x > paddleX - ballRadius && x < paddleX + paddleWidth + ballRadius) {
+                        dy = -dy;
+                        score++;
+                        if (score > highScore) {
+                            highScore = score;
+                            localStorage.setItem("highScore", highScore);
+                            document.getElementById("highScore").innerText = highScore;
+                        }
+                    } else {
+                        
+                        document.location.reload();
+                    }
+                }
+
+                if (rightPressed && paddleX < canvas.width - paddleWidth) {
+                    paddleX += 4; 
+                } else if (leftPressed && paddleX > 0) {
+                    paddleX -= 4; 
+                }
+
+                x += dx;
+                y += dy;
+            }
+
+            setInterval(draw, 10);
+        </script>
+    </div>
+
+</body>
+</html>

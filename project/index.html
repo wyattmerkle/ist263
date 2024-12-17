@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Things</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background-color: #4b0082; 
+            overflow: hidden;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: #4b0082; 
+        }
+        .content {
+            padding: 20px;
+        }
+        .about-me {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #4b0082; 
+        }
+        .about-me div {
+            flex: 1;
+        }
+        .about-me h2 {
+            margin-top: 0;
+            color: #4b0082; 
+        }
+        .about-me ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .about-me ul li {
+            margin-bottom: 10px;
+        }
+        @media (max-width: 768px) {
+            .navbar a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+            .content {
+                padding: 10px;
+            }
+            .about-me {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="game-reviews.html">Game Reviews</a>
+        <a href="movie-reviews.html">Movie Reviews</a>
+        <a href="catchtheball.html">Catch the Ball</a>
+    </div>
+
+    <div class="content">
+        <h1>Welcome to My Favorite Things</h1>
+        
+        <div class="about-me">
+            <div>
+                <h2>About Me</h2>
+                <p>Hey, my name is Wyatt Merkle. I am currently an Information Management and Technology major at Syracuse. I've always been entranced by computers and found myself learning the ins and outs of them from such a young age. That’s why this major fits me so well, I love working with servers and creating web pages. From my life I’ve acquired quite a few skills just to list some; Python (Programming Language) • Social • Adaptive • Leadership • Creative Problem Solving.</p>
+                <h3>Personal Info</h3>
+                <p>Although I love technology, I found my own values in socializing without consistently being glued to technology. My friends I have gained throughout all my life mean the world to me and I always find myself being open to new individuals and treating every single experience in life as a way to grow who I am because everyone has such a great story to tell. In the future I wish to continue growing from every experience and opportunity I get and inspiring the people who surround me and work together to make the world a better place. Being so open to everything and so willing to grow lets me learn things at an insane pace and I'm never the same person who I am at the end of the night that I was that morning.</p>
+                <h3>List of my favorite beverages</h3>
+                <ul>
+                    <li>Red Bull™ - Popular Energy Drink</li>
+                    <li>Hot Chocolate - Liquid chocolatey flavored beverage served hot</li>
+                    <li>Coffee - Yummy caffeinated black beverage</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
